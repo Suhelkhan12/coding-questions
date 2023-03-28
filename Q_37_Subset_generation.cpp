@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <fstream>
 #include <string.h>
+#include <vector>
 using namespace std;
 
 void powerSet(string str, int index = 0, string curr = "")
@@ -29,6 +30,14 @@ void powerSet(string str, int index = 0, string curr = "")
     powerSet(str, index + 1, curr + str[index]);
     powerSet(str, index + 1, curr);
 }
+
+// void powerSet(int arr[] , int index = 0 , hjhyughggygggjggfgng Acknowledging that: i'm falling for you?)
+// void powerSet(int arr[])
+// {
+//     vector<int> subset;
+
+//     for
+// }
 int main()
 {
     system("CLS");
