@@ -5,6 +5,7 @@
 #include <vector>
 #include <string.h>
 #include <unordered_map>
+#include <unordered_set>
 using namespace std;
 
 vector<int> ZeroSumSubarr(vector<int> &v)
@@ -29,21 +30,37 @@ vector<int> ZeroSumSubarr(vector<int> &v)
     //     }
     // }
 
-    // IMP using hashing
+    // IMP using hashing with paring
 
-    unordered_map<int, int> mp;
-    int sum = 0;
+    // unordered_map<int, int> mp;
+    // int sum = 0;
+    // for (int i = 0; i < v.size(); i++)
+    // {
+    //     sum += v[i];
+
+    //     if (mp.find(sum) == mp.end())
+    //         mp[sum] = i;
+    //     else
+    //         return {mp[sum] + 1, i};
+    // }
+
+    // return {};
+
+    // IMP single hash when only boolean has to be returned
+
+    unordered_set<int> hp;
+    int prefix_sum;
+
     for (int i = 0; i < v.size(); i++)
     {
-        sum += v[i];
+        prefix_sum += v[i];
 
-        if (mp.find(sum) == mp.end())
-            mp[sum] = i;
-        else
-            return {mp[sum] + 1, i};
+        if (hp.find(prefix_sum) != hp.end())
+            return {1};
+        else if (prefix_sum == 0)
+            return {1};
+        hp.insert(prefix_sum);
     }
-
-    return {};
 }
 
 int main()
